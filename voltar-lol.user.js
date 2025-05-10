@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name          voltar.lol BYPASSER
 // @namespace     voltar.lol
-// @version       1.4.3
-// @author        voltar.lol
+// @version       1.4.5
+// @author        Ekky
 // @description   Bypass ad-links using the voltar.lol API and get to your destination without ads!
 // @match         *://mega-guy.com/*
 // @match         *://flux.li/*
