@@ -5,7 +5,7 @@
 // @author        voltar.lol
 // @description   Bypass ad-links using the voltar.lol API and get to your destination without ads!
 // @match         *://mega-guy.com/*
-// @match         *://flux.li*
+// @match         *://flux.li/*
 // @match         *://loot-link.com/*
 // @match         *://best-links.org/*
 // @match         *://loot-links.com/*
