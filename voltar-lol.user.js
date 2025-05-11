@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          voltar.lol BYPASSER
 // @namespace     voltar.lol
-// @version       1.4.5
+// @version       1.4.7
 // @author        Ekky
 // @description   Bypass ad-links using the voltar.lol API and get to your destination without ads!
 // @match         *://mega-guy.com/*
@@ -197,9 +197,33 @@
 // @run-at document-start
 // ==/UserScript==
 
-(function () {
-    const config = { time: 10, key: '' }; // premium key allows you to bypass without hcaptcha
-    if (location.hostname.includes('voltar.lol') || location.pathname.includes('userscript.html')) return;
+(async () => {
+    const config = {
+        time: 10, // Wait time to avoid detections
+        key: '' //Premium key if you have one
+    };
+
+    const originalCreateElement = document.createElement.bind(document);
+    document.createElement = function (elementName) {
+        const element = originalCreateElement(elementName);
+        if (elementName.toLowerCase() === 'script') {
+            element.setAttribute('type', 'text/plain');
+        }
+        return element;
+    };
+
     document.documentElement.innerHTML = `<html><head><title>voltar.lol USERSCRIPT</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>html,body{height:100%;margin:0;padding:0;}body{min-height:100vh;background:linear-gradient(135deg,#331c3c 0%,#1c171d 100%);color:#e9d8fd;font-family:'Inter',Arial,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}.redirect-logo{width:96px;height:96px;margin-bottom:2rem;border-radius:16px;box-shadow:0 4px 32px 0 #4c245c44;}.redirect-msg{font-size:2.2rem;font-weight:700;color:#e9d8fd;margin-bottom:1rem;letter-spacing:1px;text-shadow:0 2px 8px #1c171d88;}.redirect-desc{font-size:1.1rem;color:#bfa6e6;margin-bottom:2.5rem;}.spinner{margin:0 auto 1.5rem auto;width:48px;height:48px;border:6px solid #a78bfa;border-top:6px solid #34d399;border-radius:50%;animation:spin 1s linear infinite;}@keyframes spin{100%{transform:rotate(360deg);}}.voltar-bar{width:320px;height:6px;background:linear-gradient(90deg,#a78bfa,#f472b6,#34d399);border-radius:3px;margin:2rem auto 0 auto;box-shadow:0 2px 12px #4c245c44;animation:barload 1.5s linear infinite;}@keyframes barload{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}</style></head><body><img src="https://voltar.lol/images/voltar_icon.png" alt="voltar.lol" class="redirect-logo" /><div class="redirect-msg">Redirecting...</div><div class="redirect-desc">Please wait while we send you to the bypass page.</div><div class="spinner"></div><div class="voltar-bar"></div></body></html>`;
-    setTimeout(() => { location.href = `https://voltar.lol/userscript.html?url=${encodeURIComponent(location.href)}&time=${config.time}&key=${config.key}`; }, 1500);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectUrl = urlParams.get('redirect');
+
+    if (redirectUrl && redirectUrl.includes('https://flux.li/android/external/main.php')) {
+        document.body.innerHTML = `<h1>voltar.lol userscript</h1><h2>Fluxus implements some extra security checks to detect bypasses so we can't automatically redirect you.</h2><h3><a href="${redirectUrl}">Click here to redirect</a></h3>`;
+        return;
+    } else if (redirectUrl) {
+        location.href = redirectUrl;
+        return;
+    }
+
+    location.href = `https://voltar.lol/userscript.html?url=${encodeURIComponent(location.href)}&time=${config.time}&key=${config.key}`;
 })();
