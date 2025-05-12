@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          voltar.lol BYPASSER
 // @namespace     voltar.lol
-// @version       1.5.7
+// @version       1.6
 // @author        Ekky
 // @description   Bypass ad-links using the voltar.lol API and get to your destination without ads!
 // @match         *://mega-guy.com/*
@@ -199,7 +199,7 @@
 
 (async () => {
     const config = {
-        time: 10, // Wait time to avoid detections
+        time: 21, // Wait time to avoid detections
         key: '' //Premium key if you have one
     };
 
@@ -220,17 +220,12 @@
     if (redirectUrl && redirectUrl.includes('https://flux.li/android/external/main.php')) {
         document.body.innerHTML = `<h1>voltar.lol userscript</h1><h2>Fluxus implements some extra security checks to detect bypasses so we can't automatically redirect you.</h2><h3><a href="${redirectUrl}">Click here to redirect</a></h3>`;
         return;
-    } else if (redirectUrl && redirectUrl.includes('https://ads.luarmor.net')) {
-        if (config.time < 20) {
-            alert('[VOLTAR CONFIG] Please set a time higher than 20 seconds to avoid getting blacklisted by luarmor!');
-            location.href = 'https://voltar.lol';
-            return;
-        }
-        return;
     } else if (redirectUrl) {
         location.href = redirectUrl;
         return;
     }
 
-    location.href = `https://voltar.lol/userscript.html?url=${encodeURIComponent(location.href)}&time=${config.time}&key=${config.key}`;
+    setTimeout(() => {
+        location.href = `https://voltar.lol/userscript.html?url=${encodeURIComponent(location.href)}&time=${config.time}&key=${config.key}`;
+    }, 1500);
 })();
