@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          voltar.lol BYPASSER
 // @namespace     voltar.lol
-// @version       1.5.5
+// @version       1.5.6
 // @author        Ekky
 // @description   Bypass ad-links using the voltar.lol API and get to your destination without ads!
 // @match         *://mega-guy.com/*
@@ -222,7 +222,7 @@
         return;
     } else if (redirectUrl && redirectUrl.includes('https://ads.luarmor.net')) {
         if (config.time < 20) {
-            alert('[VOLTAR CONFIG] Please set a time higher than 20 seconds to avoid getting blacklisted by Luarmor!');
+            alert('[VOLTAR CONFIG] Please set a time higher than 20 seconds to avoid getting blacklisted by luarmor!');
             location.href = 'https://voltar.lol';
             return;
         }
