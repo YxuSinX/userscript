@@ -190,7 +190,6 @@
 // @match         *://esohasl.net/*
 // @match         *://rbscripts.net/*
 // @match         *://link.rbscripts.net/*
-// @match         *://ads.luarmor.net/*
 // @downloadURL   https://raw.githubusercontent.com/YxuSinX/userscript/main/voltar-lol.user.js
 // @updateURL     https://raw.githubusercontent.com/YxuSinX/userscript/main/voltar-lol.user.js
 // @homepageURL   https://voltar.lol
