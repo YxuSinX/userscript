@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          voltar.lol BYPASSER
 // @namespace     voltar.lol
-// @version       1.6
+// @version       1.6.1
 // @author        Ekky
 // @description   Bypass ad-links using the voltar.lol API and get to your destination without ads!
 // @match         *://mega-guy.com/*
@@ -199,7 +199,7 @@
 
 (async () => {
     const config = {
-        time: 21, // Wait time to avoid detections
+        time: 10, // Wait time to avoid detections
         key: '' //Premium key if you have one
     };
 
@@ -227,5 +227,5 @@
 
     setTimeout(() => {
         location.href = `https://voltar.lol/userscript.html?url=${encodeURIComponent(location.href)}&time=${config.time}&key=${config.key}`;
-    }, 1500);
+    }, 2000);
 })();
