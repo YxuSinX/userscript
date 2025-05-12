@@ -191,7 +191,7 @@
 // @match         *://rbscripts.net/*
 // @match         *://link.rbscripts.net/*
 // @downloadURL   https://raw.githubusercontent.com/YxuSinX/userscript/main/voltar-lol.user.js
-// @updateURL     https://raw.githubusercontent.com/YxuSinX/userscript/main/voltar-lol.user.js
+// @updateURL     https://github.com/YxuSinX/userscript/raw/refs/heads/main/voltar-lol.user.js
 // @homepageURL   https://voltar.lol
 // @icon          https://i.imgur.com/AeFbszq.png
 // @run-at document-start
