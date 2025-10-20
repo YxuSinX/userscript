@@ -227,5 +227,5 @@
 
     setTimeout(() => {
         location.href = `https://voltar.lol/userscript.html?url=${encodeURIComponent(location.href)}&time=${config.time}&key=${config.key}`;
-    }, 2000);
+    }, 1850);
 })();
